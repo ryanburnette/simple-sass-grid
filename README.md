@@ -51,8 +51,10 @@ creating an inner element then applying styling and adding elements from there.
 Changelog
 ---------
 
++ v1.0.0
+  + Registered with Bower
+
 + v0.1.0
-  + Added to Bower
   + No longer requires Compass or Bourbon
 
 [1]: http://css-tricks.com/dont-overthink-it-grids
