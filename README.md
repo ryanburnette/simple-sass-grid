@@ -26,9 +26,9 @@ In SCSS
 
 Set up your variables if you don't want to use the defaults.
 
-**$ssgrid-padding** This value sets up your gutters.  
-**$ssgrid-min-col** The minimum number of columns for a grid.  
-**$ssgrid-max-col** The maximum number of columns for a grid.  
+`$ssgrid-padding` This value sets up your gutters.  
+`$ssgrid-min-col` The minimum number of columns for a grid.  
+`$ssgrid-max-col` The maximum number of columns for a grid.  
 
 Then create your grids like so.
 
