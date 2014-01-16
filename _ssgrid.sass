@@ -1,0 +1,38 @@
+/*
+ * A Really Simple Sass Grid
+ * Forked from "Don't Overthink It Grids" by Chris Coyier http://css-tricks.com/dont-overthink-it-grids/
+ * Supported in IE8+
+ */
+ 
+// Variables
+$sgridPadding: 20px
+$sgridMinColumns: 3
+$sgridMaxColumns: 6
+ 
+// Grid
+%sgrid-box-sizing
+  +box-sizing(border-box)
+.sgrid
+  margin-left: $sgridPadding
+  margin-bottom: $sgridPadding
+  @extend %sgrid-box-sizing
+  &:after
+    content: ""
+    display: table
+    clear: both
+%sgrid-col
+  float: left
+  padding-right: $sgridPadding
+  @extend %sgrid-box-sizing
+=sgrid-col($one,$all)
+  width: ((100%/$all)*$one)
+  @extend %sgrid-col
+$a: $sgridMinColumns
+$m: $sgridMaxColumns
+@while $a <= $m
+  $o: 1
+  @while $o <= $a
+    .col-#{$o}-#{$a}
+      +sgrid-col($o,$a)
+    $o: $o+1
+  $a: $a+1
