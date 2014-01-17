@@ -24,7 +24,8 @@ In SCSS
 @include "ssgrid";
 ```
 
-Set up your variables if you don't want to use the defaults.
+Set up your variables if you don't want to use the defaults. The !default flag is being used so you
+can set these before calling the snippet into your project and your value will be respected.
 
 `$ssgrid-padding` This value sets up your gutters.  
 `$ssgrid-min-col` The minimum number of columns for a grid.  
@@ -50,6 +51,9 @@ creating an inner element then applying styling and adding elements from there.
 
 Changelog
 ---------
+
++ v1.0.1
+  + Set variables using !default flag
 
 + v1.0.0
   + Registered with Bower
