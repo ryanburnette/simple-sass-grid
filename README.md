@@ -52,6 +52,9 @@ creating an inner element then applying styling and adding elements from there.
 Changelog
 ---------
 
++ v1.0.2
+  + Fixing documentation
+
 + v1.0.1
   + Set variables using !default flag
 
