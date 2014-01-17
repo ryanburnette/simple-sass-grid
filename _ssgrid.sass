@@ -18,7 +18,6 @@ $ssgrid-max-col: 12 !default
 .ssgrid
   width: auto
   margin-right: -$ssgrid-padding
-  margin-bottom: $ssgrid-padding
   @extend %ssgrid-box-sizing
   &:after
     content: ""
@@ -27,6 +26,7 @@ $ssgrid-max-col: 12 !default
 %ssgrid-col
   float: left
   padding-right: $ssgrid-padding
+  margin-bottom: $ssgrid-padding
   @extend %ssgrid-box-sizing
 =sgrid-col($one,$all)
   width: ((100%/$all)*$one)
