@@ -49,8 +49,22 @@ hang of it.
 Also note that you don't want to apply styling to the column element as it might interfere with the grid. I suggest
 creating an inner element then applying styling and adding elements from there.
 
+Not Using Sass?
+---------------
+
+You can run a local build, you'll need Node and NPM installed. Edit the variables in the build.sass file to
+customize your grid. Install dev dependencies with NPM then run Grunt.
+
+```sh
+npm install /
+grunt
+```
+
 Changelog
 ---------
+
++ v1.0.4
+  + Added build steps
 
 + v1.0.3
   + Minor margin tweaks
