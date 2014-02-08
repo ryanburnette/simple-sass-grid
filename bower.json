@@ -1,6 +1,6 @@
 {
   "name": "simple-sass-grid",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://github.com/ryanburnette/simple-sass-grid",
   "authors": [
     "Ryan Burnette <ryan.burnette@gmail.com>"
@@ -15,6 +15,7 @@
   "ignore": [
     "**/.*",
     "node_modules",
+    ".sass-cache",
     "bower_components",
     "test",
     "tests"
