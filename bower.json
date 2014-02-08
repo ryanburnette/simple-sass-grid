@@ -11,7 +11,7 @@
     "sass",
     "grid"
   ],
-  "license": "GPLv2",
+  "license": "Apache2",
   "ignore": [
     "**/.*",
     "node_modules",
