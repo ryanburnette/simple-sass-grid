@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     sass: {
       global: {
         options: {
-          style: 'compressed'
+          style: 'expanded'
         }
       , files: {
           'build.css': 'build.sass'

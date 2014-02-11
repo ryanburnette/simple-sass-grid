@@ -1,6 +1,8 @@
 Simple Sass Grid
 ================
 
+> I still need to test this v1.1.0 before release.
+
 Simple Sass Grid is a really simple Sass grid. It's based on [Don't Overthink It Grids][1] by Chris Coyier.
 
 This grid makes use of border-box sizing and behaves itself pretty well. It's written in true Sass and has
@@ -62,6 +64,10 @@ grunt
 
 Changelog
 ---------
+
++ v1.1.0
+  + Reduced number of generated selectors to improve efficiency
+  + Made ssgrid mixin for easier creation of multiple grids
 
 + v1.0.4
   + Added build steps

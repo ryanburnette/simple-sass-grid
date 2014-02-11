@@ -7,38 +7,34 @@ $ssgrid-padding: 1rem !default
 $ssgrid-min-col: 2 !default
 $ssgrid-max-col: 12 !default
 
-%ssgrid-box-sizing
-  -webkit-box-sizing: border-box
-  -moz-box-sizing: border-box
-  box-sizing: border-box
-  &:after, &:before
+=sgrid-col($one,$all)
+  width: ((100%/$all)*$one)
+  @extend %ssgrid-col
+
+=ssgrid($padding,$min-col,$max-col)
+  width: auto
+  margin-right: -$ssgrid-padding
+  &, & *, & *:before, & *:after
     -webkit-box-sizing: border-box
     -moz-box-sizing: border-box
     box-sizing: border-box
-.ssgrid
-  width: auto
-  margin-right: -$ssgrid-padding
-  @extend %ssgrid-box-sizing
   &:after
     content: ""
     display: table
     clear: both
-%ssgrid-col
-  float: left
-  padding-right: $ssgrid-padding
-  margin-bottom: $ssgrid-padding
-  @extend %ssgrid-box-sizing
-=sgrid-col($one,$all)
-  width: ((100%/$all)*$one)
-  @extend %ssgrid-col
-  @extend %ssgrid-box-sizing
-$a: $ssgrid-min-col
-$m: $ssgrid-max-col
-@while $a <= $m
-  $o: 1
-  @while $o <= $a
-    .col-#{$o}-#{$a}
-      +sgrid-col($o,$a)
-      @extend %ssgrid-box-sizing
-    $o: $o+1
-  $a: $a+1
+  %ssgrid-col
+    float: left
+    padding-right: $padding
+    margin-bottom: $padding
+  $a: $min-col
+  $m: $max-col
+  @while $a <= $m
+    $o: 1
+    @while $o <= $a
+      .col-#{$o}-#{$a}
+        +sgrid-col($o,$a)
+      $o: $o+1
+    $a: $a+1
+
+.ssgrid
+  +ssgrid($ssgrid-padding,$ssgrid-min-col,$ssgrid-max-col)
