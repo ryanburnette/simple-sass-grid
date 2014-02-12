@@ -1,3 +1,4 @@
-.sass-cache/
-node_modules/
+.sass-cache
+node_modules
 build.css
+test/grid.css

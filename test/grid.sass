@@ -1,0 +1,36 @@
+@import "../ssgrid"
+
+body
+  font-size: 62.5%
+
+.container
+  width: 96em
+  margin-left: auto
+  margin-right: auto
+@media (max-width: 65em)
+  .container
+    width: auto
+    margin-left: 2rem
+    margin-right: 2rem
+
+.grid
+  +ssgrid(2rem,2,6)
+
+.grid-compact
+  +ssgrid(0.4rem,6,12)
+  @media (max-width: 50em)
+    [class^="col"]
+      width: 50%
+
+.module
+  display: block
+  padding: 1rem
+  background-color: lightBlue
+
+p
+  display: block
+  font-size: 2rem
+  font-family: monospace
+  padding: 0
+  margin: 0
+  text-align: center

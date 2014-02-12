@@ -1,4 +1,4 @@
-// Simple Sass Grid v1.0.3 http://github.com/ryanburnette/simple-sass-grid
+// Simple Sass Grid v1.1.0 http://github.com/ryanburnette/simple-sass-grid
 // Works in IE8+
 // Based on "Don't Overthink It Grids" by Chris Coyier http://css-tricks.com/dont-overthink-it-grids/
 
@@ -6,14 +6,14 @@
 $ssgrid-padding: 1rem !default
 $ssgrid-min-col: 2 !default
 $ssgrid-max-col: 12 !default
+$ssgrid-default: true !default
 
-=sgrid-col($one,$all)
+=ssgrid-col($one,$all)
   width: ((100%/$all)*$one)
-  @extend %ssgrid-col
 
 =ssgrid($padding,$min-col,$max-col)
   width: auto
-  margin-right: -$ssgrid-padding
+  margin-right: -$padding
   &, & *, & *:before, & *:after
     -webkit-box-sizing: border-box
     -moz-box-sizing: border-box
@@ -22,7 +22,7 @@ $ssgrid-max-col: 12 !default
     content: ""
     display: table
     clear: both
-  %ssgrid-col
+  [class^="col-"]
     float: left
     padding-right: $padding
     margin-bottom: $padding
@@ -32,9 +32,10 @@ $ssgrid-max-col: 12 !default
     $o: 1
     @while $o <= $a
       .col-#{$o}-#{$a}
-        +sgrid-col($o,$a)
+        +ssgrid-col($o,$a)
       $o: $o+1
     $a: $a+1
 
-.ssgrid
-  +ssgrid($ssgrid-padding,$ssgrid-min-col,$ssgrid-max-col)
+@if $ssgrid-default == true
+  .ssgrid
+    +ssgrid($ssgrid-padding,$ssgrid-min-col,$ssgrid-max-col)

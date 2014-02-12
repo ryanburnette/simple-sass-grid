@@ -1,29 +1,19 @@
 Simple Sass Grid
 ================
 
-> I still need to test this v1.1.0 before release.
+This is a really simple Sass grid. It's based on [Don't Overthink It Grids][1] by Chris Coyier.
 
-Simple Sass Grid is a really simple Sass grid. It's based on [Don't Overthink It Grids][1] by Chris Coyier.
-
-This grid makes use of border-box sizing and behaves itself pretty well. It's written in true Sass and has
-no dependencies. Include it in your Sass before using it and don't forget to set up your variables.
+Simple Sass Grid makes use of border-box sizing and behaves itself pretty well. It's written in Sass and has
+no dependencies within Sass.
 
 Usage
 -----
 
-First, include ssgrid in your project. Make sure to adjust for the path of your install where in a
+If you're using Sass you can ssgrid in your project. Make sure to adjust for the path of your install where in a
 subdirectory or bower components directory.
-
-In Sass
 
 ```sass
 @include "ssgrid"
-```
-
-In SCSS
-
-```scss
-@include "ssgrid";
 ```
 
 Set up your variables if you don't want to use the defaults. The !default flag is being used so you
@@ -51,14 +41,42 @@ hang of it.
 Also note that you don't want to apply styling to the column element as it might interfere with the grid. I suggest
 creating an inner element then applying styling and adding elements from there.
 
+Mixin
+-----
+
+By including this library you get the `ssgrid` mixin to define additional grids. It accepts three
+arguments: padding, minimum rows, and maximum rows.
+
+```sass
+.grid
+  +ssgrid(1rem,2,12)
+```
+
+Customization
+-------------
+
+By default a single grid is included in your CSS output just by including the library file, but you
+can get more custom if you want.
+
+To disable the default grid set the `$ssgrid-default` variable to `false`. Now the library is only
+providing you with the `ssgrid` mixin to define your own grids. Here's a common pattern you might use.
+
+```sass
+.grid
+  +ssgrid(2rem,2,6)
+.grid-compact
+  +ssgrid(.4rem,3,12)
+```
+
 Not Using Sass?
 ---------------
 
-You can run a local build, you'll need Node and NPM installed. Edit the variables in the build.sass file to
-customize your grid. Install dev dependencies with NPM then run Grunt.
+If you aren't using Sass on your project, you can still use Simple Sass Grid. Customize the
+`build.sass` file included in this repository, install the NPM dependencies, run grunt, then take
+the resulting `build.css` file elsewhere.
 
 ```sh
-npm install /
+npm i /
 grunt
 ```
 
@@ -66,8 +84,8 @@ Changelog
 ---------
 
 + v1.1.0
-  + Reduced number of generated selectors to improve efficiency
-  + Made ssgrid mixin for easier creation of multiple grids
+  + Greatly reduced number of generated selectors to improve efficiency
+  + Added ssgrid mixin for easier creation of multiple, custom grids
 
 + v1.0.4
   + Added build steps
