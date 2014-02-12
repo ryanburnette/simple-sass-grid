@@ -4,7 +4,8 @@ Simple Sass Grid
 This is a really simple Sass grid. It's based on [Don't Overthink It Grids][1] by Chris Coyier.
 
 Simple Sass Grid makes use of border-box sizing and behaves itself pretty well. It's written in Sass and has
-no dependencies within Sass.
+no dependencies within Sass. One of these days it'll be made obsolete by [Flexbox][3], but until then
+it's a great way to make grid structures painless in CSS.
 
 Usage
 -----
@@ -107,3 +108,4 @@ Changelog
 
 [1]: http://css-tricks.com/dont-overthink-it-grids
 [2]: http://codepen.io/ryanburnette/pen/dcefa07c8fa60209a647391b1276f2c7
+[3]: http://css-tricks.com/snippets/css/a-guide-to-flexbox/
