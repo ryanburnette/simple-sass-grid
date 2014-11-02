@@ -1,4 +1,4 @@
-@import "../ssgrid"
+@import "../simple-sass-grid"
 
 body
   font-size: 62.5%
@@ -14,10 +14,10 @@ body
     margin-right: 2rem
 
 .grid
-  +ssgrid(2rem,2,6)
+  +simple-sass-grid(2rem)
 
 .grid-compact
-  +ssgrid(0.4rem,6,12)
+  +simple-sass-grid(0.4rem)
   @media (max-width: 50em)
     [class^="col"]
       width: 50%

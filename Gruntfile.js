@@ -3,15 +3,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     sass: {
-      build: {
-        options: {
-          style: 'expanded'
-        }
-      , files: {
-          'build.css': 'build.sass'
-        }
-      }
-    , dev: {
+      dev: {
         options: {
           style: 'expanded'
         }
@@ -42,6 +34,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
 
-  grunt.registerTask('default', ['sass:build']);
-  grunt.registerTask('dev', ['connect','watch:dev']);
+  grunt.registerTask('default', ['sass']);
+  grunt.registerTask('dev', ['connect','watch']);
 };

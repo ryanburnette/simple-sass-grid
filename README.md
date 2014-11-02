@@ -1,10 +1,12 @@
 Simple Sass Grid
 ================
 
-This is a really simple Sass grid. It's based on [Don't Overthink It Grids][1] by Chris Coyier.
+This is a really simple Sass grid that I use in my own projects via [Bower][4].
+It's based on what I learned about grids from [here][1].
 
-Simple Sass Grid makes use of border-box sizing and behaves itself pretty well. It's written in Sass and has
-no dependencies within Sass. One of these days it'll be made obsolete by [Flexbox][3], but until then
+Simple Sass Grid makes use of border-box sizing and behaves reliably in IE8+.
+It's written in Sass and has
+no dependencies. One of these days it'll be made obsolete by [Flexbox][3], but until then
 it's a great way to make grid structures painless in CSS.
 
 Usage
@@ -13,21 +15,25 @@ Usage
 If you're using Sass you can ssgrid in your project. Make sure to adjust for the path of your install where in a
 subdirectory or bower components directory.
 
-```sass
-@include "ssgrid"
+```scss
+@include "simple-sass-grid";
 ```
 
-Set up your variables if you don't want to use the defaults. The !default flag is being used so you
-can set these before calling the snippet into your project and your value will be respected.
+Create some grids using the mixin.
 
-`$ssgrid-padding` This value sets up your gutters.  
-`$ssgrid-min-col` The minimum number of columns for a grid.  
-`$ssgrid-max-col` The maximum number of columns for a grid.  
+```sass
+$padding: 1em;
 
-Then create your grids like so.
+.my_grid {
+  @include simple-sass-grid($padding);
+}
+.inner {
+  background-color: gray;
+}
+```
 
 ```html
-<div class="ssgrid">
+<div class="my_grid">
   <div class="col-1-3"><div class="inner"></div></div>
   <div class="col-1-3"><div class="inner"></div></div>
   <div class="col-1-3"><div class="inner"></div></div>
@@ -41,33 +47,6 @@ hang of it.
 
 Also note that you don't want to apply styling to the column element as it might interfere with the grid. I suggest
 creating an inner element then applying styling and adding elements from there.
-
-Mixin
------
-
-By including this library you get the `ssgrid` mixin to define additional grids. It accepts three
-arguments: padding, minimum rows, and maximum rows.
-
-```sass
-.grid
-  +ssgrid(1rem,2,12)
-```
-
-Customization
--------------
-
-By default a single grid is included in your CSS output just by including the library file, but you
-can get more custom if you want.
-
-To disable the default grid set the `$ssgrid-default` variable to `false`. Now the library is only
-providing you with the `ssgrid` mixin to define your own grids. Here's a common pattern you might use.
-
-```sass
-.grid
-  +ssgrid(2rem,2,6)
-.grid-compact
-  +ssgrid(.4rem,3,12)
-```
 
 Not Using Sass?
 ---------------
@@ -83,6 +62,11 @@ grunt
 
 Changelog
 ---------
+
++ v2.0.0
+  + Only a mixin now
+  + Output much more efficient when creating many grids
+  + Default min of 2 and max of 20
 
 + v1.1.0
   + Greatly reduced number of generated selectors to improve efficiency
@@ -109,3 +93,4 @@ Changelog
 [1]: http://css-tricks.com/dont-overthink-it-grids
 [2]: http://codepen.io/ryanburnette/pen/dcefa07c8fa60209a647391b1276f2c7
 [3]: http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+[4]: http://bower.io

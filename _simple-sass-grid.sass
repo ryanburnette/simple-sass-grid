@@ -1,0 +1,39 @@
+$col-min: 2 !default
+$col-max: 20 !default
+
+=col($one,$all)
+  width: ((100%/$all)*$one)
+
+%grid-styles
+  width: auto
+  &, & *, & *:before, & *:after
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+%col-styles
+  float: left
+
+%col-sizer
+  $min: $col-min
+  $max: $col-max
+  @while $col-min <= $col-max
+    $o: 1
+    @while $o <= $col-min
+      .col-#{$o}-#{$col-min}
+        +col($o,$col-min)
+      $o: $o+1
+    $col-min: $col-min+1
+
+=simple-sass-grid($padding)
+  @extend %grid-styles
+  @extend %col-sizer
+  margin-right: -$padding
+  > [class*="col"]
+    @extend %col-styles
+    padding-right: $padding
+    margin-bottom: $padding
