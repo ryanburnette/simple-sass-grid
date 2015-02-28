@@ -105,3 +105,4 @@ some example markup.
 [2]: http://codepen.io/ryanburnette/pen/dcefa07c8fa60209a647391b1276f2c7
 [3]: http://css-tricks.com/snippets/css/a-guide-to-flexbox/
 [4]: http://bower.io
+[5]: https://github.com/Schepp/box-sizing-polyfill
