@@ -101,6 +101,7 @@ some example markup.
 </div>
 ```
 
-[1]: http://css-tricks.com/dont-overthink-it-grids [2]:
-http://codepen.io/ryanburnette/pen/dcefa07c8fa60209a647391b1276f2c7 [3]:
-http://css-tricks.com/snippets/css/a-guide-to-flexbox/ [4]: http://bower.io
+[1]: http://css-tricks.com/dont-overthink-it-grids 
+[2]: http://codepen.io/ryanburnette/pen/dcefa07c8fa60209a647391b1276f2c7
+[3]: http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+[4]: http://bower.io
