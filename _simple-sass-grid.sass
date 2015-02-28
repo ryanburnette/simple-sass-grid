@@ -1,39 +1,41 @@
-$col-min: 2 !default
-$col-max: 20 !default
-
-=col($one,$all)
-  width: ((100%/$all)*$one)
-
-%grid-styles
-  width: auto
+=grid-border-box
   &, & *, & *:before, & *:after
     -webkit-box-sizing: border-box
     -moz-box-sizing: border-box
     box-sizing: border-box
-  &:after
-    content: ""
-    display: table
-    clear: both
 
-%col-styles
+=grid($gutter, $min: 0, $max: 0)
+  +clearfix
+  +grid-border-box
+  width: auto
+  margin:
+    right: -($gutter)
+
+=grid-column($one, $all, $gutter)
   float: left
+  width: ((100%/$all)*$one)
+  padding:
+    right: $gutter
+  margin:
+    bottom: $gutter
 
-%col-sizer
-  $min: $col-min
-  $max: $col-max
-  @while $col-min <= $col-max
+=grid-row-begin
+  clear: left
+
+=grid-row-every($n)
+  &:nth-child(#{$n}n+1)
+    +grid-row-begin
+
+=grid-row
+  +clearfix
+  & > :first-child
+    +grid-row-begin
+
+=build-grid($min, $max)
+  @while $min <= $max
     $o: 1
-    @while $o <= $col-min
-      .col-#{$o}-#{$col-min}
-        +col($o,$col-min)
+    @while $o <= $min
+      .col-#{$o}-#{$min}
+        +col($o,$min)
       $o: $o+1
-    $col-min: $col-min+1
-
-=simple-sass-grid($padding)
-  @extend %grid-styles
-  @extend %col-sizer
-  margin-right: -$padding
-  > [class*="col"]
-    @extend %col-styles
-    padding-right: $padding
-    margin-bottom: $padding
+    $min: $min+1

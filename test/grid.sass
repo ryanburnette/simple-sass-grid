@@ -1,10 +1,11 @@
+@import "../clearfix"
 @import "../simple-sass-grid"
 
 body
   font-size: 62.5%
 
 .container
-  width: 96em
+  width: 80em
   margin-left: auto
   margin-right: auto
 @media (max-width: 65em)
@@ -14,23 +15,28 @@ body
     margin-right: 2rem
 
 .grid
-  +simple-sass-grid(2rem)
+  +grid(1em)
+  .row
+    +grid-row
+  .col-1-3
+    +grid-column(1, 3, 1em)
+  .col-2-3
+    +grid-column(2, 3, 1em)
 
-.grid-compact
-  +simple-sass-grid(0.4rem)
-  @media (max-width: 50em)
-    [class^="col"]
-      width: 50%
-
-.module
-  display: block
-  padding: 1rem
-  background-color: lightBlue
+.grid-grouped
+  +grid(1em)
+  .item
+    +grid-column(1, 4, 1em)
+    +grid-row-every(4)
 
 p
   display: block
-  font-size: 2rem
+  font-size: 4em
   font-family: monospace
-  padding: 0
+  padding: 2em
   margin: 0
   text-align: center
+  background-color: lightBlue
+  span
+    display: block
+    font-size: 0.5em
