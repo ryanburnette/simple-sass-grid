@@ -1,96 +1,106 @@
-Simple Sass Grid
-================
+# Simple Sass Grid
 
-This is a really simple Sass grid that I use in my own projects via [Bower][4].
-It's based on what I learned about grids from [here][1].
+Just another Sass grid library. This one is based on [don't overthink it grids
+from CSS-Tricks][1].
 
-Simple Sass Grid makes use of border-box sizing and behaves reliably in IE8+.
-It's written in Sass and has
-no dependencies. One of these days it'll be made obsolete by [Flexbox][3], but until then
-it's a great way to make grid structures painless in CSS.
+## Mission
 
-Usage
------
+This grid library is designed with a few specific goals in mind:
 
-If you're using Sass you can ssgrid in your project. Make sure to adjust for the path of your install where in a
-subdirectory or bower components directory.
+### Flexible Context
 
-```scss
-@include "simple-sass-grid";
+SSG can be added to an existing site without enforcing its requirements on
+surrounding elements. Its context requires border-box sizing, for example, but
+this is established only on the context that actually requires it.  This makes
+it a perfect candidate for using within an embedded element, for example.
+
+### Rigid Gutters
+
+Some grids have a flexible gutter that changes as the container size changes.
+SSG uses rigid gutters. If a gutter is 30px at one width, it will always be 30px
+even if the viewport becomes really small.
+
+### Break Rows Without Wrapping
+
+I absolutely hate writing view login that wraps every `n` elements in a row.
+It's one of the more common approaches to breaking rows, but it's not a
+requirement here as long as all the elements in a grid are the same. If the
+elements aren't the same you can still call the `grid-row-begin` mixin to avoid
+having to wrap rows. You can also call a `row` mixin if you are wrapping your
+rows.
+
+### Use an "inner"
+
+This grid uses padding, not margins, so you'll want to always have an inner
+element. If you were set a background color or border on the column you wouldn't
+get the desired result.
+
+## Usage
+
+### Clearfix
+
+SSG depends on having a `clearfix` mixin. If you don't already have one, there's
+one in the directory you can include.
+
+### Bower
+
+[Bower][4] is a great way to depend on SSG.
+
+```
+bower install -S simple-sass-grid
 ```
 
-Create some grids using the mixin.
+Include the library from the `bower_components` directory.
+
+### Mixins
+
+If you're using Sass you'll probably want to take a "mixed in" approach where
+you call the core components of SSG as mixins.
+
+Call the `grid` mixin and set your gutter. I like to use a variable because
+you'll need it again.
 
 ```sass
-$padding: 1em;
-
-.my_grid {
-  @include simple-sass-grid($padding);
-}
-.inner {
-  background-color: gray;
-}
+$gutter: 1em
+.grid
+  +grid($gutter)
 ```
 
+Set up a row if you're using rows.
+
+```sass
+.grid .row
+  +grid-row
+```
+
+Set up needed columns using any pattern that you like. The idea is to say "this
+column is one of three, or 1/3. You'll need to pass in the gutter you set for
+the grid.
+
+```sass
+.grid .col-1-3
+  +grid-column(1, 3, $gutter)
+```
+
+### CSS
+
+If you aren't using Sass or if you want to build a grid and use classes on
+elements to set up your grids old school. That's cool.
+
+A `simple-sass-grid.css` file is also included that has all the classes for a
+grid with `1em` gutters and a minimum of 2 and a maximum of 20 columns. Here's
+some example markup.
+
 ```html
-<div class="my_grid">
-  <div class="col-1-3"><div class="inner"></div></div>
-  <div class="col-1-3"><div class="inner"></div></div>
-  <div class="col-1-3"><div class="inner"></div></div>
+<div class="grid">
+  <div class="row">
+    <div class="col-1-4"></div>
+    <div class="col-1-4"></div>
+    <div class="col-2-4"></div>
+  </div>
 </div>
 ```
 
-Note that each column must have a class that matches the grid. For example, if the grid has 3 columns then each
-class will end in 3. An individual column can have 1 or 2 columns. Continuing that pattern if we have 5 columns
-each column will have a class of anything through `col-1-5` to `col-4-5`. Try it out on [CodePen][2] to get the
-hang of it.
-
-Also note that you don't want to apply styling to the column element as it might interfere with the grid. I suggest
-creating an inner element then applying styling and adding elements from there.
-
-Not Using Sass?
----------------
-
-If you aren't using Sass on your project, you can still use Simple Sass Grid. Customize the
-`build.sass` file included in this repository, install the NPM dependencies, run grunt, then take
-the resulting `build.css` file elsewhere.
-
-```sh
-npm i /
-grunt
-```
-
-Changelog
----------
-
-+ v2.0.0
-  + Only a mixin now
-  + Output much more efficient when creating many grids
-  + Default min of 2 and max of 20
-
-+ v1.1.0
-  + Greatly reduced number of generated selectors to improve efficiency
-  + Added ssgrid mixin for easier creation of multiple, custom grids
-
-+ v1.0.4
-  + Added build steps
-
-+ v1.0.3
-  + Minor margin tweaks
-
-+ v1.0.2
-  + Fixing documentation
-
-+ v1.0.1
-  + Set variables using !default flag
-
-+ v1.0.0
-  + Registered with Bower
-
-+ v0.1.0
-  + No longer requires Compass or Bourbon
-
-[1]: http://css-tricks.com/dont-overthink-it-grids
-[2]: http://codepen.io/ryanburnette/pen/dcefa07c8fa60209a647391b1276f2c7
-[3]: http://css-tricks.com/snippets/css/a-guide-to-flexbox/
-[4]: http://bower.io
+[1]: http://css-tricks.com/dont-overthink-it-grids [2]:
+http://codepen.io/ryanburnette/pen/dcefa07c8fa60209a647391b1276f2c7 [3]:
+http://css-tricks.com/snippets/css/a-guide-to-flexbox/ [4]: http://bower.io
