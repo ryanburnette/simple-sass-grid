@@ -1,5 +1,8 @@
 # Version History
 
++ v3.0.1
+  + Added grid-container mixin to solve overflow issue
+
 + v3.0.0
   + Even more modular
   + Mixins for grid, row, column, row-every

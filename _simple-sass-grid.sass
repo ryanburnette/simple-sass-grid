@@ -4,9 +4,12 @@
     -moz-box-sizing: border-box
     box-sizing: border-box
 
+=grid-container
+  +grid-border-box
+  overflow: hidden
+
 =grid($gutter, $min: 0, $max: 0)
   +clearfix
-  +grid-border-box
   width: auto
   margin:
     right: -($gutter)
